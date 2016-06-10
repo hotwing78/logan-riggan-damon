@@ -1,6 +1,5 @@
 $(document).ready(function() {
   chatPage.init();
-  console.log(user);
 })
 
 var chatPage = {
@@ -17,20 +16,21 @@ var chatPage = {
     events: function(){
 
 //POST a chat
-$('form ').on('submit', function(event){
+$('button[type="post"]').on('click', function(event){
   event.preventDefault();
   var newMsg = {
+    user: $('input[name="user"]').val(),
     content: $('input[name="chatbox"]').val(),
   };
   console.log(newMsg);
-  $('.chatlog ul').append(`<li> <a href="#>"> <h3>${newMsg.content}</h3> </a></li>`);
+  $('.chatlog ul').append(`<li> <a href="#> <h2>${newMsg.user}:</h2><h3>${newMsg.content}</h3> </a></li>`);
   $.ajax({
     url: 'http://tiny-tiny.herokuapp.com/collections/damonrigganloganchat',
     method: "POST",
     data: newMsg,
     success: function(data) {
       console.log("ItWorks", data);
-      $('.chatbox ul').append(`<li> <a href="#>"> <h3>${newMsg.content}</h3> </a></li>`);
+      $('.chatbox ul').append(`<li> <a href="#> <h2>${newMsg.user}:</h2><h3>${newMsg.content}</h3> </a></li>`);
       chatPage.getChat();
     },
     error: function(err) {
@@ -73,7 +73,7 @@ getChat: function () {
       console.log("we got something", data);
       $('.chatlog ul').html("");
       data.forEach(function(chats) {
-        $('.chatlog ul').append(`<li data-id=${chats._id}> <a href="#">${chats.content}</a> </li>`);
+        $('.chatlog ul').append(`<li data-id=${chats._id}> <a href="#"> <h2>${chats.user}:</h2><h3>${chats.content}</h3> </a></li>`);
       })
     },
     error: function(err) {
