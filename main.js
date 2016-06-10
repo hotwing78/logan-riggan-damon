@@ -6,9 +6,11 @@ var chatPage = {
     url: 'http://tiny-tiny.herokuapp.com/collections/damonrigganloganchat',
     chats:[],
     init: function () {
-
+    setInterval(function(){
       chatPage.styling();
+    },1000);
       chatPage.events();
+
     },
     styling: function(){
       chatPage.getChat();
