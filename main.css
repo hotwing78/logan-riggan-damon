@@ -20,13 +20,31 @@ body {
     border: 3px solid gray;
     margin-bottom: 5%; }
 
-form input {
-  width: 96.1%;
-  margin-left: 1%; }
+form input.message{
+  width: 70%;
+  margin-left: 1%;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+form input.user{
+  width: 23%;
+  margin-left: 1%;
+  display: inline-block;
+}
+
 
 h1 {
   font-size: 2em;
-  margin-left: 22%; }
+  margin-left: 22%;
+  
+}
+
+
 
 button {
   margin-left: 1; }
