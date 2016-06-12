@@ -30,3 +30,7 @@ h1 {
 
 button {
   margin-left: 1; }
+
+ul li a {
+  text-decoration: none;
+  color: #5d5c5c; }
